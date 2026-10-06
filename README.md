@@ -1,245 +1,158 @@
-# Junior Astronaut Mission Trainer
+# 🚀 Junior Astronaut Mission Trainer
 
-## English
+<div align="center">
 
-### Challenge
+[![NASA Space Apps Challenge](https://img.shields.io/badge/NASA-Space%20Apps%202026-0B3D91?style=for-the-badge&logo=nasa)](https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/)
+[![Challenge](https://img.shields.io/badge/Challenge-Build%20a%20Junior%20Astronaut%20Mission%20Trainer-FFD166?style=for-the-badge)](https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/)
+[![Status](https://img.shields.io/badge/Status-Prototype%20in%20Progress-28A745?style=for-the-badge)]()
+[![Tech](https://img.shields.io/badge/Tech-HTML5%20%7C%20CSS3%20%7C%20JavaScript-F97316?style=for-the-badge)]()
+[![License](https://img.shields.io/badge/License-Educational-8B5CF6?style=for-the-badge)]()
 
-# Build a Junior Astronaut Mission Trainer
+</div>
 
-This project is designed for the NASA International Space Apps Challenge 2026. The goal is to create an interactive educational game or app that helps students understand the complex trade-offs involved in running a lunar or Martian outpost.
+A playful and educational mission simulator where young learners manage a lunar or Martian habitat and learn how real space systems must balance survival, resources, and engineering trade-offs.
 
-Space-themed STEM content often simplifies the engineering decisions behind a real mission or presents them in a way that is too advanced for young learners. This project aims to make those decisions tangible, fun, and understandable by turning mission management into a game.
+## 🌌 Challenge
 
-### Mission
+This project was created for the NASA International Space Apps Challenge 2026:
 
-Players take on the role of a junior mission commander responsible for keeping a lunar or Martian habitat functioning. They must balance key resources such as:
+[Build a Junior Astronaut Mission Trainer](https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/)
 
-- Life support
-- Radiation shielding
-- Power generation
-- Food production
-- Water and waste recycling
-- Crew morale and safety
+Space-themed STEM content often simplifies the engineering decisions behind a real mission or presents them at a level too advanced for young students. This project turns those trade-offs into a fun, interactive game so learners can experience firsthand how a space outpost works — and why it can fail when resources are mismanaged.
 
-Each decision affects the station's survival chances. Too much emphasis on one system can create failures elsewhere, simulating the real challenge of designing a sustainable outpost.
+---
 
-### What the game does
+## 🎯 Mission
 
-The app presents players with a mission simulation where they manage a small outpost over several in-game days or phases. Each phase introduces new conditions such as:
+Players take on the role of a junior mission commander responsible for keeping a lunar or Martian habitat alive and stable.
 
-- Solar storms
-- Equipment failures
-- Supply shortages
-- Dust storms
-- Limited energy availability
-- Crew fatigue and emergencies
+They must balance critical systems such as:
 
-Players must make choices about:
+- 🫁 Life support
+- ☢️ Radiation shielding
+- ⚡ Power generation
+- 🌾 Food production
+- 💧 Water and waste recycling
+- 👩‍🚀 Crew morale and safety
 
-- How to allocate energy between systems
+Each decision changes the future of the base. A mission may succeed or fail depending on how well the player manages competing demands in real time.
+
+---
+
+## 🧩 Gameplay concept
+
+The app simulates a small outpost across multiple in-game days or phases. Each round introduces challenges such as:
+
+- ☄️ Solar storms
+- 🔧 Equipment failures
+- 📦 Supply shortages
+- 🌪️ Dust storms
+- 🔋 Limited energy availability
+- 😵 Crew fatigue and emergencies
+
+### Key decisions
+
+- How to divide energy across systems
 - Whether to prioritize food production or shielding
 - When to repair damaged equipment
 - How to respond to unexpected events
 - Which systems need upgrades
 
-### Learning goals
+---
 
-- Understand that space habitats are not just "places to live"; they are carefully engineered systems.
-- Learn how resources interact and compete with each other.
-- See why mission design requires trade-offs and planning.
-- Build intuition about sustainability, resilience, and systems thinking.
-- Encourage curiosity in STEM through gameplay and experimentation.
+## 🧠 Learning goals
 
-### Gameplay loop
+- Understand that space habitats are engineered systems, not just places to live
+- Learn how resources interact and compete with each other
+- Recognize the importance of resilience, planning, and sustainability
+- Practice systems thinking through mission management
+- Build curiosity in STEM through game-based learning
 
-1. Start with a base habitat and limited resources.
-2. Review current system status and mission conditions.
-3. Make strategic decisions to keep the colony stable.
-4. Resolve random events and operational risks.
-5. Evaluate mission outcome based on survival, resource balance, and mission score.
-6. Retry with new strategies and improved decision making.
+---
 
-### Core experience
+## 🔄 Gameplay loop
 
-The experience should feel accessible to students while still being realistic enough to teach real engineering trade-offs. The app should combine:
+1. Start with a basic habitat and limited resources
+2. Review the colony status and mission conditions
+3. Make strategic choices for survival and stability
+4. Resolve random events and operational risks
+5. Evaluate mission success based on resource balance and crew survival
+6. Retry with a new strategy and better planning
 
-- Simple and colorful visuals
-- Quick decisions and readable feedback
-- Educational explanations for each system
-- Progression through increasing difficulty
-- Success/failure states that explain why the mission succeeded or failed
+---
 
-### Suggested technical approach
+## ✨ Core experience
 
-A simple game or web app can be built with:
+The experience should be easy for students to understand while still reflecting real engineering trade-offs.
 
-- HTML, CSS, and JavaScript for a lightweight browser experience
-- Canvas or DOM-based visual interface for the habitat dashboard
-- State-driven simulation logic for resources and events
-- Animated UI elements and charts to visualize system stability
+It combines:
 
-### Project goals
+- 🎨 Colorful and intuitive visuals
+- ⚙️ Realistic but simplified systems logic
+- 📖 Helpful educational explanations for each decision
+- 📈 Difficulty progression during play
+- ✅ Success/failure states with meaningful feedback
 
-- Make space systems engineering understandable for young learners
-- Encourage experimentation and systems thinking
-- Provide a fun, mission-based challenge with clear educational outcomes
-- Create a prototype that can be played in a classroom, event, or educational setting
+---
 
-### How to run locally
+## 🛠️ Suggested tech stack
 
-1. Clone this repository.
-2. Open the project folder in your editor.
-3. Start a local server or open the app in a browser.
-4. Play the mission simulation and adjust your strategy.
+A lightweight and accessible version can be built with:
 
-Example commands:
+- HTML5
+- CSS3
+- JavaScript
+- Canvas or DOM-based UI
+- State-driven simulation logic
+
+---
+
+## 🚀 How to run locally
+
+1. Clone this repository
+2. Open the project folder in your editor
+3. Start a local server in the browser or terminal
+4. Run the mission simulator and test different strategies
+
+### Typical commands
 
 ```bash
 npm install
 npm run dev
 ```
 
-If the project is built as a static web app, a simple local server may also work:
+If this becomes a static web app, you can also run:
 
 ```bash
 python -m http.server 8000
 ```
 
-### Future expansion ideas
+Then open:
 
-- Add multiple mission types: Moon base, Mars colony, asteroid outpost
-- Include a science and research system
-- Add crew member personalities and skills
-- Include a score summary at the end of each mission
-- Add educational pop-ups explaining each engineering decision
-- Support multiplayer or classroom competition mode
-
-### License
-
-This project is developed for educational and challenge purposes.
+```text
+http://localhost:8000
+```
 
 ---
 
-## Português
+## 🌱 Future expansion ideas
 
-### Desafio
-
-# Build a Junior Astronaut Mission Trainer
-
-Este projeto foi pensado para o NASA International Space Apps Challenge 2026. A proposta é criar um jogo ou aplicativo interativo e educativo que ajude estudantes a entender os complexos trade-offs envolvidos na operação de uma base lunar ou marciana.
-
-Conteúdos espaciais em STEM muitas vezes simplificam as decisões de engenharia por trás de uma missão real ou as apresentam em um nível muito avançado para alunos mais jovens. Este projeto busca tornar essas decisões concretas, divertidas e compreensíveis, transformando a gestão da missão em um jogo.
-
-### Missão
-
-Os jogadores assumem o papel de um comandante júnior de missão, responsável por manter uma habitação lunar ou marciana funcionando corretamente. Eles precisam equilibrar recursos essenciais como:
-
-- Suporte de vida
-- Blindagem contra radiação
-- Geração de energia
-- Produção de alimentos
-- Reuso de água e resíduos
-- Moral e segurança da tripulação
-
-Cada decisão afeta as chances de sobrevivência da estação. Dar muita prioridade a um sistema pode causar falhas em outros, simulando o verdadeiro desafio de manter uma base sustentável.
-
-### O que o jogo faz
-
-O aplicativo apresenta uma simulação de missão em que o jogador gerencia uma pequena base ao longo de vários dias ou fases do jogo. Cada fase introduz novas condições, como:
-
-- Tempestades solares
-- Falhas de equipamentos
-- Escassez de suprimentos
-- Tempestades de poeira
-- Disponibilidade limitada de energia
-- Fadiga da tripulação e emergências
-
-Os jogadores devem tomar decisões sobre:
-
-- Como alocar energia entre os sistemas
-- Se devem priorizar produção de alimentos ou blindagem
-- Quando reparar equipamentos danificados
-- Como responder a eventos inesperados
-- Quais sistemas precisam de melhorias
-
-### Objetivos de aprendizagem
-
-- Entender que habitats espaciais não são apenas “lugares para viver”; eles são sistemas cuidadosamente projetados.
-- Aprender como os recursos interagem e competem entre si.
-- Ver por que o design de uma missão exige compromissos e planejamento.
-- Desenvolver intuição sobre sustentabilidade, resiliência e pensamento sistêmico.
-- Estimular curiosidade em STEM por meio de gameplay e experimentação.
-
-### Loop de gameplay
-
-1. Começar com uma base inicial e recursos limitados.
-2. Revisar o status atual dos sistemas e as condições da missão.
-3. Tomar decisões estratégicas para manter a colônia estável.
-4. Resolver eventos aleatórios e riscos operacionais.
-5. Avaliar o resultado da missão com base em sobrevivência, equilíbrio de recursos e pontuação.
-6. Tentar novamente com novas estratégias e melhor tomada de decisão.
-
-### Experiência central
-
-A experiência deve ser acessível para estudantes, mas ainda realista o suficiente para ensinar trade-offs reais de engenharia. O app deve combinar:
-
-- Visual simples e colorido
-- Decisões rápidas e feedback legível
-- Explicações educativas para cada sistema
-- Progressão com dificuldade crescente
-- Estados de sucesso e falha que expliquem por que a missão funcionou ou não
-
-### Abordagem técnica sugerida
-
-Um jogo simples ou aplicativo web pode ser construído com:
-
-- HTML, CSS e JavaScript para uma experiência leve no navegador
-- Canvas ou interface DOM para o painel da base
-- Lógica de simulação baseada em estados para recursos e eventos
-- Elementos visuais animados e gráficos para visualizar estabilidade dos sistemas
-
-### Objetivos do projeto
-
-- Tornar a engenharia de sistemas espaciais compreensível para jovens
-- Incentivar experimentação e pensamento sistêmico
-- Oferecer um desafio divertido, baseado em missão, com resultados educacionais claros
-- Criar um protótipo que possa ser jogado em sala de aula, eventos ou ambiente educativo
-
-### Como executar localmente
-
-1. Clone este repositório.
-2. Abra a pasta do projeto no editor.
-3. Inicie um servidor local ou abra o app em um navegador.
-4. Jogue a simulação da missão e ajuste sua estratégia.
-
-Exemplo de comandos:
-
-```bash
-npm install
-npm run dev
-```
-
-Se o projeto for um app web estático, um servidor local simples também pode funcionar:
-
-```bash
-python -m http.server 8000
-```
-
-### Ideias de expansão futura
-
-- Adicionar vários tipos de missão: base lunar, colônia marciana, posto em asteroide
-- Incluir sistema de ciência e pesquisa
-- Adicionar personalidades e habilidades da tripulação
-- Incluir resumo final de pontuação ao fim de cada missão
-- Adicionar pop-ups educativos explicando cada decisão de engenharia
-- Suportar modo de competição em sala de aula ou multijogador
-
-### Licença
-
-Este projeto foi desenvolvido para fins educacionais e de desafio.
+- 🌙 Moon base, Mars colony, and asteroid outpost modes
+- 🧪 Science and research systems
+- 👥 Crew member personalities and skills
+- 📊 Final score summaries after each mission
+- 💡 Educational pop-ups explaining each engineering choice
+- 🏆 Classroom competition and multiplayer support
 
 ---
 
-## Project title in one line
+## 📜 License
 
-Junior Astronaut Mission Trainer — an interactive educational simulation about balancing survival, resources, and engineering decisions in a lunar or Martian habitat.
+This project is intended for educational and challenge purposes.
+
+---
+
+## 🏁 Project tagline
+
+Junior Astronaut Mission Trainer — a space survival strategy game that teaches the engineering trade-offs behind building and sustaining a mission outpost.
+
