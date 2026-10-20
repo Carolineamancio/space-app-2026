@@ -4,13 +4,15 @@
 
 [![NASA Space Apps Challenge](https://img.shields.io/badge/NASA-Space%20Apps%202026-0B3D91?style=for-the-badge&logo=nasa)](https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/)
 [![Challenge](https://img.shields.io/badge/Challenge-Build%20a%20Junior%20Astronaut%20Mission%20Trainer-FFD166?style=for-the-badge)](https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/)
-[![Status](https://img.shields.io/badge/Status-Prototype%20in%20Progress-28A745?style=for-the-badge)]()
+[![Status](https://img.shields.io/badge/Status-Playable%20Prototype-28A745?style=for-the-badge)]()
 [![Tech](https://img.shields.io/badge/Tech-HTML5%20%7C%20CSS3%20%7C%20JavaScript-F97316?style=for-the-badge)]()
 [![License](https://img.shields.io/badge/License-Educational-8B5CF6?style=for-the-badge)]()
 
 </div>
 
-A playful and educational mission simulator where young learners manage a lunar or Martian habitat and learn how real space systems must balance survival, resources, and engineering trade-offs.
+An educational game where young learners manage a lunar or Martian outpost and experience how power, life support, radiation protection, and food production compete for limited resources.
+
+**Play the game:** open [`index.html`](index.html) in a browser or publish this repository with GitHub Pages.
 
 ## 🌌 Challenge
 
@@ -39,16 +41,11 @@ Each decision changes the future of the base. A mission may succeed or fail depe
 
 ---
 
-## 🧩 Gameplay concept
+## 🧩 How to play
 
-The app simulates a small outpost across multiple in-game days or phases. Each round introduces challenges such as:
+Survive 12 sols with a crew of four. Choose the Moon or Mars, inspect structures on the isometric map, and adjust power allocation before advancing each turn. Every power level uses 3 kWh per sol; the battery covers the difference between generation and demand.
 
-- ☄️ Solar storms
-- 🔧 Equipment failures
-- 📦 Supply shortages
-- 🌪️ Dust storms
-- 🔋 Limited energy availability
-- 😵 Crew fatigue and emergencies
+Mission incidents bring choices with costs and consequences. Running out of oxygen, water, or food ends the mission; balancing the systems until sol 12 completes the training.
 
 ### Key decisions
 
@@ -81,61 +78,43 @@ The app simulates a small outpost across multiple in-game days or phases. Each r
 
 ---
 
-## ✨ Core experience
+## ✨ Experience
 
-The experience should be easy for students to understand while still reflecting real engineering trade-offs.
-
-It combines:
-
-- 🎨 Colorful and intuitive visuals
-- ⚙️ Realistic but simplified systems logic
-- 📖 Helpful educational explanations for each decision
-- 📈 Difficulty progression during play
-- ✅ Success/failure states with meaningful feedback
+- 🗺️ Isometric map with selectable structures
+- ⚡ Adjustable power allocation across five systems
+- ☄️ Events with choices and consequences
+- 📊 Resource indicators, crew status, and a final report
+- 🌙 Lunar and Martian environments
 
 ---
 
-## 🛠️ Suggested tech stack
+## 🛠️ Technology
 
-A lightweight and accessible version can be built with:
-
-- HTML5
-- CSS3
-- JavaScript
-- Canvas or DOM-based UI
-- State-driven simulation logic
+Vanilla HTML, CSS, and JavaScript. The map is rendered with Canvas. No dependencies, installation, or build step are required.
 
 ---
 
-## 🚀 How to run locally
+## 🚀 Run locally
 
-1. Clone this repository
-2. Open the project folder in your editor
-3. Start a local server in the browser or terminal
-4. Run the mission simulator and test different strategies
-
-### Typical commands
-
-```bash
-npm install
-npm run dev
-```
-
-If this becomes a static web app, you can also run:
+Open `index.html` in a browser. To start a local server, run this command in the project folder:
 
 ```bash
 python -m http.server 8000
 ```
 
-Then open:
+Then visit `http://localhost:8000`.
 
-```text
-http://localhost:8000
-```
+## 🌐 Publish with GitHub Pages
+
+1. Push the repository files to GitHub.
+2. Open **Settings → Pages** in the repository.
+3. Under **Build and deployment**, select **Deploy from a branch**.
+4. Choose the default branch and the **/(root)** folder, then select **Save**.
+5. Wait for deployment and open the URL shown in the Pages settings.
 
 ---
 
-## 🌱 Future expansion ideas
+## 🌱 Next steps
 
 - 🌙 Moon base, Mars colony, and asteroid outpost modes
 - 🧪 Science and research systems

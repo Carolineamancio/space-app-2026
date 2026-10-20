@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101512">
+    <meta name="description" content="Um simulador isométrico de sobrevivência e engenharia para administrar um posto avançado fora da Terra.">
+    <title>Fronteira | Simulador de posto avançado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Fronteira, início">
+          <span class="brand-mark" aria-hidden="true">F</span>
+          <span>FRONTEIRA<span class="brand-dot">.</span></span>
+        </a>
+        <div class="topbar-center"><span class="live-dot"></span> CENTRO DE OPERAÇÕES <span class="topbar-divider">/</span> SIMULAÇÃO 01</div>
+        <span class="topbar-stamp">MISSÃO 04 · TERRA</span>
+      </header>
+
+      <main>
+        <section class="mission-heading" aria-labelledby="mission-title">
+          <div>
+            <p class="eyebrow">TREINAMENTO DE MISSÃO <span>·</span> TURMA 04</p>
+            <h1 id="mission-title">Um mundo novo.<br><span>Uma chance de mantê-lo vivo.</span></h1>
+          </div>
+          <div class="mission-switcher" role="group" aria-label="Escolher destino">
+            <button class="destination-button is-active" type="button" data-world="moon" aria-pressed="true"><span class="world-symbol moon-symbol" aria-hidden="true"></span> LUA</button>
+            <button class="destination-button" type="button" data-world="mars" aria-pressed="false"><span class="world-symbol mars-symbol" aria-hidden="true"></span> MARTE</button>
+          </div>
+        </section>
+
+        <section class="status-strip" aria-label="Indicadores da missão">
+          <div class="status-title"><span class="live-dot"></span><span>STATUS DA<br>TRIPULAÇÃO</span></div>
+          <div class="crew-count"><strong id="crew-value">04</strong><span>EM<br>CAMPO</span><span class="crew-avatars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
+          <div class="resource" data-resource="oxygen">
+            <div class="resource-label"><span>O₂</span><span>OXIGÊNIO</span><strong id="oxygen-value">82%</strong></div>
+            <div class="meter"><span id="oxygen-meter" style="width:82%"></span></div>
+          </div>
+          <div class="resource" data-resource="water">
+            <div class="resource-label"><span>H₂O</span><span>ÁGUA</span><strong id="water-value">74%</strong></div>
+            <div class="meter"><span id="water-meter" style="width:74%"></span></div>
+          </div>
+          <div class="resource" data-resource="food">
+            <div class="resource-label"><span>△</span><span>ALIMENTOS</span><strong id="food-value">68%</strong></div>
+            <div class="meter"><span id="food-meter" style="width:68%"></span></div>
+          </div>
+          <div class="resource" data-resource="energy">
+            <div class="resource-label"><span>ϟ</span><span>BATERIA</span><strong id="energy-value">76%</strong></div>
+            <div class="meter"><span id="energy-meter" style="width:76%"></span></div>
+          </div>
+          <div class="resource" data-resource="shield">
+            <div class="resource-label"><span>◈</span><span>BLINDAGEM</span><strong id="shield-value">64%</strong></div>
+            <div class="meter"><span id="shield-meter" style="width:64%"></span></div>
+          </div>
+        </section>
+
+        <div class="mission-grid">
+          <section class="outpost-panel" aria-labelledby="outpost-heading">
+            <div class="panel-heading map-heading">
+              <div><p class="eyebrow">SUPERFÍCIE <span>·</span> <span id="location-label">CRATERA SHACKLETON</span></p><h2 id="outpost-heading">Posto avançado <span class="online-tag"><i></i> OPERACIONAL</span></h2></div>
+              <div class="sol-counter"><span>SOL</span><strong id="sol-value">01</strong><span>/ 12</span></div>
+            </div>
+            <div class="map-wrap">
+              <canvas id="outpost-map" aria-label="Mapa isométrico interativo do posto avançado. Selecione uma estrutura para inspecioná-la."></canvas>
+              <div class="map-coordinates"><span>LAT 89.9° S</span><span id="map-weather">CÉU LIMPO · −42 °C</span></div>
+              <div class="map-legend"><span><i class="legend-dot habitat-dot"></i> HABITAT</span><span><i class="legend-dot power-dot"></i> ENERGIA</span><span><i class="legend-dot grow-dot"></i> CULTIVO</span></div>
+            </div>
+            <div class="map-caption"><span id="inspection-title">HABITAT PRINCIPAL</span><p id="inspection-description">Abrigo pressurizado. É aqui que a tripulação dorme e respira.</p><span class="caption-coords" id="inspection-coords">MÓDULO 01 · SETOR A</span></div>
+            <div class="event-feed" aria-live="polite"><span class="feed-mark" aria-hidden="true">!</span><div><span class="eyebrow">DIÁRIO DE BORDO</span><p id="event-message">Todos os sistemas nominais. A equipe está pronta para o primeiro sol.</p></div></div>
+          </section>
+
+          <aside class="control-panel" aria-label="Controles da missão">
+            <div class="panel-heading control-heading"><div><p class="eyebrow">REDE ELÉTRICA</p><h2>Distribuição</h2></div><span class="power-symbol" aria-hidden="true">ϟ</span></div>
+            <div class="power-summary"><div><span>GERAÇÃO SOLAR</span><strong id="generation-value">18 <small>kWh</small></strong></div><div class="power-flow" aria-hidden="true">→</div><div><span>DEMANDA</span><strong id="demand-value">15 <small>kWh</small></strong></div></div>
+            <p class="section-note">Energia por sistema <span>· 3 kWh por nível</span></p>
+            <div class="allocation-list" id="allocation-list">
+              <div class="allocation-row" data-system="life"><span class="system-icon life-icon" aria-hidden="true">O₂</span><span class="system-name">Suporte de vida<small>Ar e pressão</small></span><div class="stepper"><button type="button" data-adjust="life" data-delta="-1" aria-label="Reduzir energia para suporte de vida">−</button><strong id="level-life">2</strong><button type="button" data-adjust="life" data-delta="1" aria-label="Aumentar energia para suporte de vida">+</button></div></div>
+              <div class="allocation-row" data-system="water"><span class="system-icon water-icon" aria-hidden="true">H₂O</span><span class="system-name">Reciclo de água<small>Filtro e recuperação</small></span><div class="stepper"><button type="button" data-adjust="water" data-delta="-1" aria-label="Reduzir energia para reciclo de água">−</button><strong id="level-water">2</strong><button type="button" data-adjust="water" data-delta="1" aria-label="Aumentar energia para reciclo de água">+</button></div></div>
+              <div class="allocation-row" data-system="food"><span class="system-icon food-icon" aria-hidden="true">✳</span><span class="system-name">Estufa<small>Alimentos frescos</small></span><div class="stepper"><button type="button" data-adjust="food" data-delta="-1" aria-label="Reduzir energia para a estufa">−</button><strong id="level-food">2</strong><button type="button" data-adjust="food" data-delta="1" aria-label="Aumentar energia para a estufa">+</button></div></div>
+              <div class="allocation-row" data-system="shield"><span class="system-icon shield-icon" aria-hidden="true">◈</span><span class="system-name">Blindagem<small>Proteção contra radiação</small></span><div class="stepper"><button type="button" data-adjust="shield" data-delta="-1" aria-label="Reduzir energia para blindagem">−</button><strong id="level-shield">1</strong><button type="button" data-adjust="shield" data-delta="1" aria-label="Aumentar energia para blindagem">+</button></div></div>
+              <div class="allocation-row" data-system="habitat"><span class="system-icon habitat-icon" aria-hidden="true">⌂</span><span class="system-name">Habitat<small>Conforto da tripulação</small></span><div class="stepper"><button type="button" data-adjust="habitat" data-delta="-1" aria-label="Reduzir energia para o habitat">−</button><strong id="level-habitat">1</strong><button type="button" data-adjust="habitat" data-delta="1" aria-label="Aumentar energia para o habitat">+</button></div></div>
+            </div>
+            <div class="allocation-feedback" id="allocation-feedback" aria-live="polite">Reserva saudável. Você tem energia para investir.</div>
+            <button class="advance-button" id="advance-button" type="button"><span>AVANÇAR PARA O PRÓXIMO SOL</span><span class="button-arrow" aria-hidden="true">→</span></button>
+            <div class="turn-hint"><span class="keycap">↵</span> <span>A cada sol, a tripulação consome recursos.</span></div>
+          </aside>
+        </div>
+        <footer class="page-footer"><span>FRONTEIRA <span class="footer-separator">/</span> LABORATÓRIO DE MISSÕES</span><span>UM SIMULADOR DE DECISÕES REAIS</span></footer>
+      </main>
+    </div>
+
+    <dialog class="event-dialog" id="event-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-topline"><span class="eyebrow">ALERTA DE MISSÃO <span>·</span> SOL <span id="event-sol">02</span></span><button class="icon-button close-dialog" type="button" aria-label="Fechar alerta">×</button></div>
+      <div class="event-icon" aria-hidden="true" id="event-icon">!</div>
+      <p class="eyebrow" id="event-kicker">EVENTO INESPERADO</p><h2 id="dialog-title">Tempestade solar a caminho</h2>
+      <p class="dialog-copy" id="dialog-copy">Uma ejeção de partículas se aproxima. A blindagem pode proteger a equipe, mas reforçá-la consome a energia reservada para outros sistemas.</p>
+      <div class="choice-list" id="choice-list"></div>
+    </dialog>
+    <dialog class="event-dialog outcome-dialog" id="outcome-dialog" aria-labelledby="outcome-title">
+      <span class="outcome-stamp" id="outcome-stamp">MISSÃO CONCLUÍDA</span><p class="eyebrow">RELATÓRIO FINAL</p><h2 id="outcome-title">12 sóis. Uma base viva.</h2><p class="dialog-copy" id="outcome-copy"></p><div class="outcome-stats" id="outcome-stats"></div><button class="advance-button" id="restart-button" type="button"><span>INICIAR NOVA MISSÃO</span><span class="button-arrow" aria-hidden="true">↻</span></button>
+    </dialog>
+  </body>
+</html>

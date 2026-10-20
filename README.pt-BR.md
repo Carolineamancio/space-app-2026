@@ -4,13 +4,15 @@
 
 [![NASA Space Apps Challenge](https://img.shields.io/badge/NASA-Space%20Apps%202026-0B3D91?style=for-the-badge&logo=nasa)](https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/)
 [![Desafio](https://img.shields.io/badge/Desafio-Build%20a%20Junior%20Astronaut%20Mission%20Trainer-FFD166?style=for-the-badge)](https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/)
-[![Status](https://img.shields.io/badge/Status-Prot%C3%B3tipo%20em%20desenvolvimento-28A745?style=for-the-badge)]()
+[![Status](https://img.shields.io/badge/Status-Prot%C3%B3tipo%20jog%C3%A1vel-28A745?style=for-the-badge)]()
 [![Tecnologia](https://img.shields.io/badge/Tecnologia-HTML5%20%7C%20CSS3%20%7C%20JavaScript-F97316?style=for-the-badge)]()
 [![Licença](https://img.shields.io/badge/Licen%C3%A7a-Educacional-8B5CF6?style=for-the-badge)]()
 
 </div>
 
-Um simulador de missão educativo e divertido em que jovens aprendizes gerenciam uma base lunar ou marciana e descobrem como sistemas reais do espaço precisam equilibrar sobrevivência, recursos e trade-offs de engenharia.
+Um jogo educativo em que jovens aprendizes administram um posto avançado lunar ou marciano e experimentam como energia, suporte de vida, proteção contra radiação e produção de alimentos disputam recursos limitados.
+
+**O jogo já pode ser experimentado:** abra [`index.html`](index.html) no navegador ou publique o repositório pelo GitHub Pages.
 
 ## 🌌 Desafio
 
@@ -39,16 +41,11 @@ Cada decisão altera o futuro da base. A missão pode ter sucesso ou fracassar d
 
 ---
 
-## 🧩 Conceito de gameplay
+## 🧩 Como jogar
 
-O aplicativo simula uma pequena base ao longo de vários dias ou fases do jogo. Cada rodada introduz desafios como:
+Sobreviva a 12 sóis com uma equipe de quatro pessoas. Escolha entre Lua e Marte, inspecione as estruturas no mapa isométrico e ajuste a energia de cada sistema antes de avançar o turno. Cada nível de energia consome 3 kWh por sol; a bateria cobre a diferença entre geração e demanda.
 
-- ☄️ Tempestades solares
-- 🔧 Falhas de equipamentos
-- 📦 Escassez de suprimentos
-- 🌪️ Tempestades de poeira
-- 🔋 Energia disponível em quantidade limitada
-- 😵 Fadiga da tripulação e emergências
+Incidentes surgem durante a missão e apresentam decisões com custos e consequências. Oxigênio, água ou alimentos esgotados encerram a missão; manter os sistemas em equilíbrio até o 12º sol conclui o treinamento.
 
 ### Decisões principais
 
@@ -81,61 +78,43 @@ O aplicativo simula uma pequena base ao longo de vários dias ou fases do jogo. 
 
 ---
 
-## ✨ Experiência central
+## ✨ Experiência
 
-A experiência deve ser fácil para os alunos entenderem sem perder a fidelidade aos trade-offs reais de engenharia.
-
-Ela combina:
-
-- 🎨 Visual colorido e intuitivo
-- ⚙️ Lógica de sistemas realista, porém simplificada
-- 📖 Explicações educativas úteis para cada decisão
-- 📈 Progressão de dificuldade durante as partidas
-- ✅ Estados de sucesso e falha com feedback significativo
+- 🗺️ Mapa isométrico com estruturas selecionáveis
+- ⚡ Distribuição de energia ajustável para cinco sistemas
+- ☄️ Eventos com escolhas e consequências
+- 📊 Indicadores de recursos, estado da tripulação e relatório final
+- 🌙 Cenários lunares e marcianos
 
 ---
 
-## 🛠️ Stack tecnológica sugerida
+## 🛠️ Tecnologias
 
-Uma versão leve e acessível pode ser criada com:
-
-- HTML5
-- CSS3
-- JavaScript
-- Interface em Canvas ou DOM
-- Lógica de simulação baseada em estados
+HTML, CSS e JavaScript nativos. O mapa é desenhado em Canvas e o jogo não exige dependências, instalação ou etapa de build.
 
 ---
 
-## 🚀 Como executar localmente
+## 🚀 Executar localmente
 
-1. Clone este repositório
-2. Abra a pasta do projeto no editor
-3. Inicie um servidor local no navegador ou no terminal
-4. Execute o simulador de missão e teste diferentes estratégias
-
-### Comandos típicos
-
-```bash
-npm install
-npm run dev
-```
-
-Se o projeto for um aplicativo web estático, também é possível executar:
+Abra `index.html` diretamente no navegador. Para usar um servidor local, execute na pasta do projeto:
 
 ```bash
 python -m http.server 8000
 ```
 
-Em seguida, abra:
+Depois acesse `http://localhost:8000`.
 
-```text
-http://localhost:8000
-```
+## 🌐 Publicar no GitHub Pages
+
+1. Envie os arquivos do repositório para o GitHub.
+2. No repositório, abra **Settings → Pages**.
+3. Em **Build and deployment**, selecione **Deploy from a branch**.
+4. Escolha a branch principal e a pasta **/(root)**, depois clique em **Save**.
+5. Aguarde o deploy e abra o endereço indicado na própria página de configurações.
 
 ---
 
-## 🌱 Ideias de expansão futura
+## 🌱 Próximos passos
 
 - 🌙 Modos de base lunar, colônia marciana e posto em asteroide
 - 🧪 Sistemas de ciência e pesquisa
