@@ -10,9 +10,9 @@
 
 </div>
 
-Um jogo educativo em que jovens aprendizes administram um posto avançado lunar ou marciano e experimentam como energia, suporte de vida, proteção contra radiação e produção de alimentos disputam recursos limitados.
+Um jogo educativo bilíngue de exploração espacial criado para o [NASA Space Apps Challenge 2026](https://www.spaceappschallenge.org/2026/challenges/). Controle a equipe em um mapa isométrico ampliado, descubra suprimentos e transforme um posto lunar ou marciano em uma base melhor.
 
-**O jogo já pode ser experimentado:** abra [`index.html`](index.html) no navegador ou publique o repositório pelo GitHub Pages.
+**O jogo já pode ser experimentado:** abra [`index.html`](index.html) no navegador ou publique o repositório pelo GitHub Pages. Este é um projeto educacional independente desenvolvido para o desafio, não um produto oficial da NASA.
 
 ## 🌌 Desafio
 
@@ -26,34 +26,18 @@ Conteúdos espaciais em STEM muitas vezes simplificam as decisões de engenharia
 
 ## 🎯 Missão
 
-Os jogadores assumem o papel de um comandante júnior de missão responsável por manter uma base lunar ou marciana viva e estável.
-
-Eles precisam equilibrar sistemas essenciais como:
-
-- 🫁 Suporte de vida
-- ☢️ Blindagem contra radiação
-- ⚡ Geração de energia
-- 🌾 Produção de alimentos
-- 💧 Reuso de água e resíduos
-- 👩‍🚀 Moral e segurança da tripulação
-
-Cada decisão altera o futuro da base. A missão pode ter sucesso ou fracassar dependendo de quão bem o jogador gerencia demandas concorrentes em tempo real.
+Escolha quatro especialistas e explore a região juntos. Cada pessoa tem uma habilidade que ajuda a coletar recursos ou cuidar da equipe. A missão é encontrar materiais, melhorar os módulos e manter o posto funcionando por 12 sóis.
 
 ---
 
 ## 🧩 Como jogar
 
-Sobreviva a 12 sóis com uma equipe de quatro pessoas. Escolha entre Lua e Marte, inspecione as estruturas no mapa isométrico e ajuste a energia de cada sistema antes de avançar o turno. Cada nível de energia consome 3 kWh por sol; a bateria cobre a diferença entre geração e demanda.
-
-Incidentes surgem durante a missão e apresentam decisões com custos e consequências. Oxigênio, água ou alimentos esgotados encerram a missão; manter os sistemas em equilíbrio até o 12º sol conclui o treinamento.
-
-### Decisões principais
-
-- Como dividir a energia entre os sistemas
-- Se deve priorizar a produção de alimentos ou a blindagem
-- Quando reparar equipamentos danificados
-- Como responder a eventos inesperados
-- Quais sistemas precisam de upgrades
+1. Escolha português ou inglês no seletor do topo.
+2. Selecione um tripulante para usar sua habilidade especial.
+3. Caminhe com `WASD`, as setas do teclado ou os controles direcionais na tela. Clique em um ponto do mapa para se mover até lá.
+4. Ao encontrar sucata, gelo, sementes ou um módulo, pressione `E` ou use o botão de interação.
+5. Recolha materiais e aprimore o habitat, os painéis solares, a estufa, o reciclador de água ou a antena.
+6. Encerre cada sol para renovar suprimentos e avançar a expedição. Mantenha oxigênio, água e alimentos disponíveis até o 12º sol.
 
 ---
 
@@ -69,28 +53,29 @@ Incidentes surgem durante a missão e apresentam decisões com custos e consequ�
 
 ## 🔄 Loop de gameplay
 
-1. Começar com uma base básica e recursos limitados
-2. Revisar o status da colônia e as condições da missão
-3. Fazer escolhas estratégicas para sobrevivência e estabilidade
-4. Resolver eventos aleatórios e riscos operacionais
-5. Avaliar o sucesso da missão com base no equilíbrio de recursos e na sobrevivência da tripulação
-6. Tentar novamente com uma nova estratégia e melhor planejamento
+1. Escolher um especialista
+2. Explorar o mapa e encontrar suprimentos
+3. Usar habilidades para recolher bônus
+4. Gastar materiais em melhorias visíveis na base
+5. Avançar o sol e continuar a exploração
 
 ---
 
 ## ✨ Experiência
 
-- 🗺️ Mapa isométrico com estruturas selecionáveis
-- ⚡ Distribuição de energia ajustável para cinco sistemas
-- ☄️ Eventos com escolhas e consequências
-- 📊 Indicadores de recursos, estado da tripulação e relatório final
+- 🗺️ Mapa isométrico ampliado (10 × 8) com personagem controlável
+- 🚀 Tela de abertura com apresentação do projeto e links oficiais do desafio
+- 🧑‍🚀 Quatro tripulantes com habilidades próprias
+- 📦 Coleta de sucata, gelo e sementes
+- 🛠️ Cinco módulos que podem ser aprimorados
 - 🌙 Cenários lunares e marcianos
+- 🌐 Interface em português e inglês, com idioma lembrado no navegador
 
 ---
 
 ## 🛠️ Tecnologias
 
-HTML, CSS e JavaScript nativos. O mapa é desenhado em Canvas e o jogo não exige dependências, instalação ou etapa de build.
+HTML, CSS e JavaScript nativos. O mapa é desenhado em Canvas e o jogo não exige dependências, instalação ou etapa de build. A lógica da exploração fica em `exploration.js`.
 
 ---
 
@@ -116,12 +101,10 @@ Depois acesse `http://localhost:8000`.
 
 ## 🌱 Próximos passos
 
-- 🌙 Modos de base lunar, colônia marciana e posto em asteroide
-- 🧪 Sistemas de ciência e pesquisa
-- 👥 Personalidades e habilidades da tripulação
-- 📊 Resumo final de pontuação ao fim de cada missão
-- 💡 Pop-ups educativos explicando cada escolha de engenharia
-- 🏆 Modo de competição em sala de aula e suporte multijogador
+- 🌌 Novas regiões e rotas de exploração
+- 🧰 Mais recursos, receitas de fabricação e melhorias
+- 🧭 Missões opcionais com objetivos e recompensas diferentes
+- 🏆 Recordes locais e modo de competição em sala de aula
 
 ---
 
@@ -133,4 +116,4 @@ Este projeto foi desenvolvido para fins educacionais e de desafio.
 
 ## 🏁 Frase do projeto
 
-Junior Astronaut Mission Trainer — um jogo de estratégia espacial que ensina os trade-offs de engenharia por trás da construção e manutenção de uma base de missão.
+Junior Astronaut Mission Trainer — explore, colete e construa em uma missão espacial educativa.

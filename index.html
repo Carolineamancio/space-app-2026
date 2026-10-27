@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#101512">
-    <meta name="description" content="Um simulador isométrico de sobrevivência e engenharia para administrar um posto avançado fora da Terra.">
-    <title>Fronteira | Simulador de posto avançado</title>
+    <meta name="description" content="Explore um posto avançado lunar ou marciano, colete recursos e ajude sua equipe a construir uma base melhor.">
+    <title>Fronteira | Exploração espacial</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="game.js" defer></script>
+    <script src="exploration.js" defer></script>
   </head>
   <body>
     <div class="app-shell">
@@ -19,43 +19,62 @@
           <span class="brand-mark" aria-hidden="true">F</span>
           <span>FRONTEIRA<span class="brand-dot">.</span></span>
         </a>
-        <div class="topbar-center"><span class="live-dot"></span> CENTRO DE OPERAÇÕES <span class="topbar-divider">/</span> SIMULAÇÃO 01</div>
-        <span class="topbar-stamp">MISSÃO 04 · TERRA</span>
+        <div class="topbar-center"><span class="live-dot"></span> <span data-i18n="commandCenter">CENTRO DE OPERAÇÕES</span> <span class="topbar-divider">/</span> <span data-i18n="expedition">EXPEDIÇÃO 01</span></div>
+        <div class="language-switch" role="group" aria-label="Language / idioma">
+          <button type="button" class="language-button is-active" data-language="pt" aria-pressed="true">PT</button>
+          <button type="button" class="language-button" data-language="en" aria-pressed="false">EN</button>
+        </div>
       </header>
 
-      <main>
+      <section class="intro-screen" id="intro-screen" aria-labelledby="intro-title">
+        <div class="intro-content">
+          <a class="challenge-mark" href="https://www.spaceappschallenge.org/2026/challenges/" target="_blank" rel="noreferrer" data-i18n="challengeLabel">NASA SPACE APPS CHALLENGE · 2026</a>
+          <p class="intro-kicker" data-i18n="introKicker">UMA EXPEDIÇÃO DE CAMPO EM OUTRO MUNDO</p>
+          <h1 id="intro-title" class="intro-title" data-i18n="introTitle">A próxima fronteira<br><span>precisa de você.</span></h1>
+          <p class="intro-copy" data-i18n="introCopy">Lidere uma equipe de especialistas em uma expedição lunar ou marciana. Explore o mapa, encontre suprimentos e ajude a construir um lar longe da Terra.</p>
+          <div class="intro-actions">
+            <button type="button" class="launch-button" id="launch-button"><span data-i18n="launch">COMEÇAR EXPEDIÇÃO</span><span aria-hidden="true">→</span></button>
+            <a class="challenge-link" href="https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/" target="_blank" rel="noreferrer"><span data-i18n="challengeLink">CONHEÇA O DESAFIO</span><span aria-hidden="true">↗</span></a>
+          </div>
+          <p class="intro-disclaimer" data-i18n="projectNote">Projeto educacional independente, desenvolvido para o desafio NASA Space Apps 2026.</p>
+        </div>
+        <div class="intro-image-credit"><span data-i18n="imageCredit">IMAGEM: APOLLO 11 · NASA</span><span>AS11-40-5877</span></div>
+        <div class="intro-index" aria-hidden="true"><span>01</span><i></i><span>03</span></div>
+      </section>
+
+      <main id="game-app" hidden>
         <section class="mission-heading" aria-labelledby="mission-title">
           <div>
-            <p class="eyebrow">TREINAMENTO DE MISSÃO <span>·</span> TURMA 04</p>
-            <h1 id="mission-title">Um mundo novo.<br><span>Uma chance de mantê-lo vivo.</span></h1>
+            <p class="eyebrow" data-i18n="eyebrow">EXPEDIÇÃO DE CAMPO <span>·</span> EQUIPE 04</p>
+            <h1 id="mission-title" data-i18n="headline">Um mundo novo.<br><span>Uma chance de mantê-lo vivo.</span></h1>
           </div>
           <div class="mission-switcher" role="group" aria-label="Escolher destino">
-            <button class="destination-button is-active" type="button" data-world="moon" aria-pressed="true"><span class="world-symbol moon-symbol" aria-hidden="true"></span> LUA</button>
-            <button class="destination-button" type="button" data-world="mars" aria-pressed="false"><span class="world-symbol mars-symbol" aria-hidden="true"></span> MARTE</button>
+            <button class="destination-button is-active" type="button" data-world="moon" aria-pressed="true"><span class="world-symbol moon-symbol" aria-hidden="true"></span> <span data-i18n="moon">LUA</span></button>
+            <button class="destination-button" type="button" data-world="mars" aria-pressed="false"><span class="world-symbol mars-symbol" aria-hidden="true"></span> <span data-i18n="mars">MARTE</span></button>
           </div>
         </section>
 
         <section class="status-strip" aria-label="Indicadores da missão">
-          <div class="status-title"><span class="live-dot"></span><span>STATUS DA<br>TRIPULAÇÃO</span></div>
-          <div class="crew-count"><strong id="crew-value">04</strong><span>EM<br>CAMPO</span><span class="crew-avatars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
+          <div class="status-title"><span class="live-dot"></span><span data-i18n="crewStatus">STATUS DA<br>TRIPULAÇÃO</span></div>
+          <div class="crew-count"><strong id="crew-value">04</strong><span data-i18n="inField">EM<br>CAMPO</span><span class="crew-avatars" aria-hidden="true"><i></i><i></i><i></i><i></i></span></div>
           <div class="resource" data-resource="oxygen">
-            <div class="resource-label"><span>O₂</span><span>OXIGÊNIO</span><strong id="oxygen-value">82%</strong></div>
+            <div class="resource-label"><span>O₂</span><span data-i18n="oxygen">OXIGÊNIO</span><strong id="oxygen-value">82%</strong></div>
             <div class="meter"><span id="oxygen-meter" style="width:82%"></span></div>
           </div>
           <div class="resource" data-resource="water">
-            <div class="resource-label"><span>H₂O</span><span>ÁGUA</span><strong id="water-value">74%</strong></div>
+            <div class="resource-label"><span>H₂O</span><span data-i18n="water">ÁGUA</span><strong id="water-value">74%</strong></div>
             <div class="meter"><span id="water-meter" style="width:74%"></span></div>
           </div>
           <div class="resource" data-resource="food">
-            <div class="resource-label"><span>△</span><span>ALIMENTOS</span><strong id="food-value">68%</strong></div>
+            <div class="resource-label"><span>△</span><span data-i18n="food">ALIMENTOS</span><strong id="food-value">68%</strong></div>
             <div class="meter"><span id="food-meter" style="width:68%"></span></div>
           </div>
           <div class="resource" data-resource="energy">
-            <div class="resource-label"><span>ϟ</span><span>BATERIA</span><strong id="energy-value">76%</strong></div>
+            <div class="resource-label"><span>ϟ</span><span data-i18n="energy">ENERGIA</span><strong id="energy-value">76%</strong></div>
             <div class="meter"><span id="energy-meter" style="width:76%"></span></div>
           </div>
           <div class="resource" data-resource="shield">
-            <div class="resource-label"><span>◈</span><span>BLINDAGEM</span><strong id="shield-value">64%</strong></div>
+            <div class="resource-label"><span>◈</span><span data-i18n="shield">BLINDAGEM</span><strong id="shield-value">64%</strong></div>
             <div class="meter"><span id="shield-meter" style="width:64%"></span></div>
           </div>
         </section>
@@ -63,35 +82,43 @@
         <div class="mission-grid">
           <section class="outpost-panel" aria-labelledby="outpost-heading">
             <div class="panel-heading map-heading">
-              <div><p class="eyebrow">SUPERFÍCIE <span>·</span> <span id="location-label">CRATERA SHACKLETON</span></p><h2 id="outpost-heading">Posto avançado <span class="online-tag"><i></i> OPERACIONAL</span></h2></div>
-              <div class="sol-counter"><span>SOL</span><strong id="sol-value">01</strong><span>/ 12</span></div>
+              <div><p class="eyebrow"><span data-i18n="surface">SUPERFÍCIE</span> <span>·</span> <span id="location-label">CRATERA SHACKLETON</span></p><h2 id="outpost-heading"><span data-i18n="outpost">Posto avançado</span> <span class="online-tag"><i></i> <span data-i18n="operational">OPERACIONAL</span></span></h2></div>
+              <div class="sol-counter"><span data-i18n="sol">SOL</span><strong id="sol-value">01</strong><span>/ 12</span></div>
             </div>
             <div class="map-wrap">
-              <canvas id="outpost-map" aria-label="Mapa isométrico interativo do posto avançado. Selecione uma estrutura para inspecioná-la."></canvas>
+              <canvas id="outpost-map" tabindex="0" aria-label="Mapa isométrico explorável. Use WASD ou as setas para mover o personagem."></canvas>
               <div class="map-coordinates"><span>LAT 89.9° S</span><span id="map-weather">CÉU LIMPO · −42 °C</span></div>
-              <div class="map-legend"><span><i class="legend-dot habitat-dot"></i> HABITAT</span><span><i class="legend-dot power-dot"></i> ENERGIA</span><span><i class="legend-dot grow-dot"></i> CULTIVO</span></div>
+              <div class="map-legend"><span><i class="legend-dot habitat-dot"></i> <span data-i18n="structures">MÓDULOS</span></span><span><i class="legend-dot power-dot"></i> <span data-i18n="supplies">SUPRIMENTOS</span></span><span><i class="legend-dot grow-dot"></i> <span data-i18n="you">VOCÊ</span></span></div>
             </div>
-            <div class="map-caption"><span id="inspection-title">HABITAT PRINCIPAL</span><p id="inspection-description">Abrigo pressurizado. É aqui que a tripulação dorme e respira.</p><span class="caption-coords" id="inspection-coords">MÓDULO 01 · SETOR A</span></div>
-            <div class="event-feed" aria-live="polite"><span class="feed-mark" aria-hidden="true">!</span><div><span class="eyebrow">DIÁRIO DE BORDO</span><p id="event-message">Todos os sistemas nominais. A equipe está pronta para o primeiro sol.</p></div></div>
+            <div class="map-caption"><span id="inspection-title">HABITAT PRINCIPAL</span><p id="inspection-description">Explore o terreno, encontre suprimentos e ajude a equipe.</p><span class="caption-coords" id="inspection-coords">MÓDULO 01 · SETOR A</span></div>
+            <div class="event-feed" aria-live="polite"><span class="feed-mark" aria-hidden="true">!</span><div><span class="eyebrow" data-i18n="fieldLog">DIÁRIO DE CAMPO</span><p id="event-message">A equipe chegou. Vamos explorar a região.</p></div></div>
           </section>
 
-          <aside class="control-panel" aria-label="Controles da missão">
-            <div class="panel-heading control-heading"><div><p class="eyebrow">REDE ELÉTRICA</p><h2>Distribuição</h2></div><span class="power-symbol" aria-hidden="true">ϟ</span></div>
-            <div class="power-summary"><div><span>GERAÇÃO SOLAR</span><strong id="generation-value">18 <small>kWh</small></strong></div><div class="power-flow" aria-hidden="true">→</div><div><span>DEMANDA</span><strong id="demand-value">15 <small>kWh</small></strong></div></div>
-            <p class="section-note">Energia por sistema <span>· 3 kWh por nível</span></p>
-            <div class="allocation-list" id="allocation-list">
-              <div class="allocation-row" data-system="life"><span class="system-icon life-icon" aria-hidden="true">O₂</span><span class="system-name">Suporte de vida<small>Ar e pressão</small></span><div class="stepper"><button type="button" data-adjust="life" data-delta="-1" aria-label="Reduzir energia para suporte de vida">−</button><strong id="level-life">2</strong><button type="button" data-adjust="life" data-delta="1" aria-label="Aumentar energia para suporte de vida">+</button></div></div>
-              <div class="allocation-row" data-system="water"><span class="system-icon water-icon" aria-hidden="true">H₂O</span><span class="system-name">Reciclo de água<small>Filtro e recuperação</small></span><div class="stepper"><button type="button" data-adjust="water" data-delta="-1" aria-label="Reduzir energia para reciclo de água">−</button><strong id="level-water">2</strong><button type="button" data-adjust="water" data-delta="1" aria-label="Aumentar energia para reciclo de água">+</button></div></div>
-              <div class="allocation-row" data-system="food"><span class="system-icon food-icon" aria-hidden="true">✳</span><span class="system-name">Estufa<small>Alimentos frescos</small></span><div class="stepper"><button type="button" data-adjust="food" data-delta="-1" aria-label="Reduzir energia para a estufa">−</button><strong id="level-food">2</strong><button type="button" data-adjust="food" data-delta="1" aria-label="Aumentar energia para a estufa">+</button></div></div>
-              <div class="allocation-row" data-system="shield"><span class="system-icon shield-icon" aria-hidden="true">◈</span><span class="system-name">Blindagem<small>Proteção contra radiação</small></span><div class="stepper"><button type="button" data-adjust="shield" data-delta="-1" aria-label="Reduzir energia para blindagem">−</button><strong id="level-shield">1</strong><button type="button" data-adjust="shield" data-delta="1" aria-label="Aumentar energia para blindagem">+</button></div></div>
-              <div class="allocation-row" data-system="habitat"><span class="system-icon habitat-icon" aria-hidden="true">⌂</span><span class="system-name">Habitat<small>Conforto da tripulação</small></span><div class="stepper"><button type="button" data-adjust="habitat" data-delta="-1" aria-label="Reduzir energia para o habitat">−</button><strong id="level-habitat">1</strong><button type="button" data-adjust="habitat" data-delta="1" aria-label="Aumentar energia para o habitat">+</button></div></div>
+          <aside class="control-panel explorer-panel" aria-label="Controles da exploração">
+            <div class="panel-heading control-heading"><div><p class="eyebrow" data-i18n="fieldTeam">EQUIPE DE CAMPO</p><h2 data-i18n="chooseCrew">Escolha quem vai explorar</h2></div><span class="power-symbol" aria-hidden="true">✳</span></div>
+            <div class="crew-picker" id="crew-picker" role="group" aria-label="Escolher tripulante"></div>
+            <div class="active-crew"><span class="crew-portrait" id="active-portrait" aria-hidden="true">M</span><div><strong id="active-crew-name">Mara Vega</strong><span id="active-crew-skill">Geóloga · encontra mais sucata</span></div><span class="skill-mark" id="active-crew-mark">✦</span></div>
+            <div class="backpack-heading"><span data-i18n="backpack">MOCHILA</span><span data-i18n="collectibleItems">ITENS COLETÁVEIS</span></div>
+            <div class="inventory-list" aria-label="Inventário">
+              <div class="inventory-item"><span class="inventory-icon scrap-icon">⬡</span><span data-i18n="scrap">Sucata</span><strong id="scrap-count">1</strong></div>
+              <div class="inventory-item"><span class="inventory-icon ice-icon">◆</span><span data-i18n="ice">Gelo</span><strong id="ice-count">0</strong></div>
+              <div class="inventory-item"><span class="inventory-icon seed-icon">✳</span><span data-i18n="seeds">Sementes</span><strong id="seed-count">0</strong></div>
             </div>
-            <div class="allocation-feedback" id="allocation-feedback" aria-live="polite">Reserva saudável. Você tem energia para investir.</div>
-            <button class="advance-button" id="advance-button" type="button"><span>AVANÇAR PARA O PRÓXIMO SOL</span><span class="button-arrow" aria-hidden="true">→</span></button>
-            <div class="turn-hint"><span class="keycap">↵</span> <span>A cada sol, a tripulação consome recursos.</span></div>
+            <div class="target-card" id="target-card"><span class="eyebrow" data-i18n="nearby">PERTO DE VOCÊ</span><strong id="target-title">Escolha um ponto no mapa</strong><p id="target-description">Caminhe até um suprimento ou módulo para interagir.</p></div>
+            <button class="advance-button interact-button" id="interact-button" type="button" disabled><span id="interact-label">INTERAGIR</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+            <div class="exploration-controls">
+              <div class="dpad" role="group" aria-label="Movimentação">
+                <button type="button" data-move="up" aria-label="Mover para cima">↑</button>
+                <button type="button" data-move="left" aria-label="Mover para esquerda">←</button>
+                <button type="button" data-move="down" aria-label="Mover para baixo">↓</button>
+                <button type="button" data-move="right" aria-label="Mover para direita">→</button>
+              </div>
+              <div class="controls-copy"><span class="keycap">WASD</span><span data-i18n="moveHint">mover</span><br><span class="keycap">E</span><span data-i18n="actionHint">interagir</span></div>
+              <button class="sol-button" id="advance-button" type="button" title="Encerrar o sol"><span data-i18n="endSol">ENCERRAR SOL</span><span aria-hidden="true">↗</span></button>
+            </div>
           </aside>
         </div>
-        <footer class="page-footer"><span>FRONTEIRA <span class="footer-separator">/</span> LABORATÓRIO DE MISSÕES</span><span>UM SIMULADOR DE DECISÕES REAIS</span></footer>
+        <footer class="page-footer"><span>FRONTEIRA <span class="footer-separator">/</span> <span data-i18n="fieldLab">LABORATÓRIO DE EXPLORAÇÃO</span></span><span data-i18n="footerLine">CAMINHE · DESCUBRA · CONSTRUA</span></footer>
       </main>
     </div>
 

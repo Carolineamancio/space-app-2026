@@ -10,9 +10,9 @@
 
 </div>
 
-An educational game where young learners manage a lunar or Martian outpost and experience how power, life support, radiation protection, and food production compete for limited resources.
+A bilingual space exploration game created for the [NASA Space Apps Challenge 2026](https://www.spaceappschallenge.org/2026/challenges/). Control a crew across an expanded isometric map, discover supplies, and turn a lunar or Martian outpost into a better home.
 
-**Play the game:** open [`index.html`](index.html) in a browser or publish this repository with GitHub Pages.
+**Play the game:** open [`index.html`](index.html) in a browser or publish this repository with GitHub Pages. This is an independent educational project developed for the challenge, not an official NASA product.
 
 ## 🌌 Challenge
 
@@ -26,34 +26,18 @@ Space-themed STEM content often simplifies the engineering decisions behind a re
 
 ## 🎯 Mission
 
-Players take on the role of a junior mission commander responsible for keeping a lunar or Martian habitat alive and stable.
-
-They must balance critical systems such as:
-
-- 🫁 Life support
-- ☢️ Radiation shielding
-- ⚡ Power generation
-- 🌾 Food production
-- 💧 Water and waste recycling
-- 👩‍🚀 Crew morale and safety
-
-Each decision changes the future of the base. A mission may succeed or fail depending on how well the player manages competing demands in real time.
+Choose four specialists and explore the region together. Each crew member has a skill that helps gather resources or care for the team. Find materials, upgrade modules, and keep the outpost running for 12 sols.
 
 ---
 
 ## 🧩 How to play
 
-Survive 12 sols with a crew of four. Choose the Moon or Mars, inspect structures on the isometric map, and adjust power allocation before advancing each turn. Every power level uses 3 kWh per sol; the battery covers the difference between generation and demand.
-
-Mission incidents bring choices with costs and consequences. Running out of oxygen, water, or food ends the mission; balancing the systems until sol 12 completes the training.
-
-### Key decisions
-
-- How to divide energy across systems
-- Whether to prioritize food production or shielding
-- When to repair damaged equipment
-- How to respond to unexpected events
-- Which systems need upgrades
+1. Choose English or Portuguese with the selector at the top.
+2. Select a crew member to use their special skill.
+3. Walk with `WASD`, the arrow keys, or the on-screen directional pad. Click a spot on the map to move there.
+4. When you reach scrap, ice, seeds, or a module, press `E` or use the interaction button.
+5. Gather materials and upgrade the habitat, solar array, greenhouse, water recycler, or antenna.
+6. End each sol to replenish supplies and continue the expedition. Keep oxygen, water, and food available until sol 12.
 
 ---
 
@@ -69,28 +53,29 @@ Mission incidents bring choices with costs and consequences. Running out of oxyg
 
 ## 🔄 Gameplay loop
 
-1. Start with a basic habitat and limited resources
-2. Review the colony status and mission conditions
-3. Make strategic choices for survival and stability
-4. Resolve random events and operational risks
-5. Evaluate mission success based on resource balance and crew survival
-6. Retry with a new strategy and better planning
+1. Choose a specialist
+2. Explore the map and find supplies
+3. Use skills to earn collection bonuses
+4. Spend materials on visible base upgrades
+5. Advance the sol and keep exploring
 
 ---
 
 ## ✨ Experience
 
-- 🗺️ Isometric map with selectable structures
-- ⚡ Adjustable power allocation across five systems
-- ☄️ Events with choices and consequences
-- 📊 Resource indicators, crew status, and a final report
+- 🗺️ Expanded 10 × 8 isometric map with a controllable character
+- 🚀 Intro screen presenting the project and linking to official challenge pages
+- 🧑‍🚀 Four crew members with unique skills
+- 📦 Scrap, ice, and seed collection
+- 🛠️ Five upgradeable modules
 - 🌙 Lunar and Martian environments
+- 🌐 English and Portuguese interface, with saved language preference
 
 ---
 
 ## 🛠️ Technology
 
-Vanilla HTML, CSS, and JavaScript. The map is rendered with Canvas. No dependencies, installation, or build step are required.
+Vanilla HTML, CSS, and JavaScript. The map is rendered with Canvas. No dependencies, installation, or build step are required. Exploration logic lives in `exploration.js`.
 
 ---
 
@@ -116,12 +101,10 @@ Then visit `http://localhost:8000`.
 
 ## 🌱 Next steps
 
-- 🌙 Moon base, Mars colony, and asteroid outpost modes
-- 🧪 Science and research systems
-- 👥 Crew member personalities and skills
-- 📊 Final score summaries after each mission
-- 💡 Educational pop-ups explaining each engineering choice
-- 🏆 Classroom competition and multiplayer support
+- 🌌 New regions and exploration routes
+- 🧰 More resources, crafting recipes, and upgrades
+- 🧭 Optional missions with different goals and rewards
+- 🏆 Local records and classroom challenge mode
 
 ---
 
@@ -133,5 +116,5 @@ This project is intended for educational and challenge purposes.
 
 ## 🏁 Project tagline
 
-Junior Astronaut Mission Trainer — a space survival strategy game that teaches the engineering trade-offs behind building and sustaining a mission outpost.
+Junior Astronaut Mission Trainer — explore, collect, and build in an educational space expedition.
 
