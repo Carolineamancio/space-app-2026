@@ -26,7 +26,7 @@ Conteúdos espaciais em STEM muitas vezes simplificam as decisões de engenharia
 
 ## 🎯 Missão
 
-Escolha quatro especialistas e explore a região juntos. Cada pessoa tem uma habilidade que ajuda a coletar recursos ou cuidar da equipe. A missão é encontrar materiais, melhorar os módulos e manter o posto funcionando por 12 sóis.
+Escolha quatro especialistas e explore a região juntos. Cada pessoa tem uma habilidade que ajuda a coletar recursos ou cuidar da equipe. Objetivo principal: manter a equipe viva por 12 sóis, começando com 40% em cada reserva.
 
 ---
 
@@ -37,7 +37,9 @@ Escolha quatro especialistas e explore a região juntos. Cada pessoa tem uma hab
 3. Caminhe com `WASD`, as setas do teclado ou os controles direcionais na tela. Clique em um ponto do mapa para se mover até lá.
 4. Ao encontrar sucata, gelo, sementes ou um módulo, pressione `E` ou use o botão de interação.
 5. Recolha materiais e aprimore o habitat, os painéis solares, a estufa, o reciclador de água ou a antena.
-6. Encerre cada sol para renovar suprimentos e avançar a expedição. Mantenha oxigênio, água e alimentos disponíveis até o 12º sol.
+6. Complete os dois objetivos de campo do sol atual; o próximo sol começa automaticamente após uma breve espera. Não há botão para encerrá-lo manualmente.
+7. Além das tarefas diárias, complete duas metas de apoio: recuperar dois depósitos de gelo e aprimorar o reciclador de água. Oxigênio, água, alimentos e energia diminuem com o uso; caminhadas extraveiculares também gastam energia.
+8. Melhorias no habitat, na estufa e no reciclador compensam parte do consumo diário.
 
 ---
 

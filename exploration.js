@@ -17,6 +17,30 @@ const introText = {
   pt: { challengeLabel: "NASA SPACE APPS CHALLENGE · 2026", introKicker: "UMA EXPEDIÇÃO DE CAMPO EM OUTRO MUNDO", introTitle: "A próxima fronteira<br><span>precisa de você.</span>", introCopy: "Lidere uma equipe de especialistas em uma expedição lunar ou marciana. Explore o mapa, encontre suprimentos e ajude a construir um lar longe da Terra.", launch: "COMEÇAR EXPEDIÇÃO", challengeLink: "CONHEÇA O DESAFIO", projectNote: "Projeto educacional independente, desenvolvido para o desafio NASA Space Apps 2026.", imageCredit: "IMAGEM: APOLLO 11 · NASA" },
   en: { challengeLabel: "NASA SPACE APPS CHALLENGE · 2026", introKicker: "A FIELD EXPEDITION ON ANOTHER WORLD", introTitle: "The next frontier<br><span>needs you.</span>", introCopy: "Lead a team of specialists on a lunar or Martian expedition. Explore the map, find supplies, and help build a home far from Earth.", launch: "START EXPEDITION", challengeLink: "EXPLORE THE CHALLENGE", projectNote: "Independent educational project developed for the NASA Space Apps 2026 challenge.", imageCredit: "IMAGE: APOLLO 11 · NASA" }
 };
+const missionText = {
+  pt: { missionLabel: "PLANO DA MISSÃO", mainObjective: "Mantenha a equipe viva por 12 sóis", mainInstructions: "Administre os sistemas essenciais. Melhorias na base recuperam recursos a cada sol.", solsCompleted: "SÓIS CONCLUÍDOS", supportGoals: "METAS DE APOIO", iceObjective: "Recupere 2 depósitos de gelo", recyclerObjective: "Aprimore o reciclador de água", consumptionNote: "Por sol, cada pessoa consome água, oxigênio e alimento. Caminhadas EVA também gastam energia.", supportReport: "Metas de apoio", supportComplete: "concluídas", solProgress: "sols concluídos" },
+  en: { missionLabel: "MISSION PLAN", mainObjective: "Keep the crew alive for 12 sols", mainInstructions: "Manage essential systems. Base upgrades restore resources each sol.", solsCompleted: "SOLS COMPLETED", supportGoals: "SUPPORT GOALS", iceObjective: "Recover 2 ice deposits", recyclerObjective: "Upgrade the water recycler", consumptionNote: "Each crew member uses water, oxygen, and food every sol. EVA walks also use power.", supportReport: "Support goals", supportComplete: "completed", solProgress: "sols complete" }
+};
+missionText.pt.mainInstructions = "Você começa com 40% em cada reserva. Administre os sistemas; melhorias recuperam recursos a cada sol.";
+missionText.en.mainInstructions = "Start with 40% in every reserve. Manage each system; upgrades restore resources every sol.";
+missionText.pt.missionProgressLabel = "Progresso da missão";
+missionText.en.missionProgressLabel = "Mission progress";
+missionText.pt.dailyTasks = "OBJETIVOS DE CAMPO";
+missionText.en.dailyTasks = "FIELD OBJECTIVES";
+missionText.pt.dailyTasksNote = "Complete os dois objetivos para o próximo sol começar automaticamente.";
+missionText.en.dailyTasksNote = "Complete both objectives for the next sol to begin automatically.";
+missionText.pt.solStatus = "SOL EM ANDAMENTO";
+missionText.en.solStatus = "SOL IN PROGRESS";
+missionText.pt.solWaiting = "OBJETIVOS CONCLUÍDOS · AGUARDE O PRÓXIMO SOL";
+missionText.en.solWaiting = "OBJECTIVES COMPLETE · WAITING FOR NEXT SOL";
+missionText.pt.collectTask = "Recolha 1";
+missionText.en.collectTask = "Collect 1";
+missionText.pt.scrapTask = "peça de sucata";
+missionText.pt.iceTask = "depósito de gelo";
+missionText.pt.seedsTask = "pacote de sementes";
+missionText.en.scrapTask = "scrap crate";
+missionText.en.iceTask = "ice deposit";
+missionText.en.seedsTask = "seed packet";
 
 const crew = [
   { name: { pt: "Mara Vega", en: "Mara Vega" }, role: { pt: "Geóloga", en: "Geologist" }, skill: "geologist", color: "#d8a16b", mark: "◆" },
@@ -45,16 +69,18 @@ const initialNodes = [
 const costs = { habitat: { scrap: 2, ice: 1 }, solar: { scrap: 2 }, greenhouse: { scrap: 2, seeds: 1 }, recycler: { scrap: 1, ice: 2 }, antenna: { scrap: 2, seeds: 1 } };
 const state = {
   language: localStorage.getItem("fronteira-language") === "en" ? "en" : "pt",
-  world: "moon", sol: 1, selectedCrew: 0, player: { col: 2, row: 6 },
-  target: null, destination: null, animation: null, moveTimer: null,
-  resources: { oxygen: 82, water: 74, food: 68, energy: 76, shield: 64 },
+  world: "moon", sol: 1, solsCompleted: 0, selectedCrew: 0, player: { col: 2, row: 6 },
+  target: null, destination: null, animation: null, moveTimer: null, advanceTimer: null, waiting: false,
+  dailyTasks: ["scrap", "ice"], dailyCollected: {},
+  resources: { oxygen: 40, water: 40, food: 40, energy: 40, shield: 40 },
   inventory: { scrap: 1, ice: 0, seeds: 0 }, upgrades: { habitat: 0, solar: 0, greenhouse: 0, recycler: 0, antenna: 0 },
+  collected: { scrap: 0, ice: 0, seeds: 0 },
   nodes: structuredClone(initialNodes), ended: false,
   lastMessage: { pt: extraText.pt.welcome, en: extraText.en.welcome }
 };
 
-const t = key => text[state.language][key] || extraText[state.language][key] || introText[state.language][key] || key;
-const tFor = (key, language) => text[language][key] || extraText[language][key] || introText[language][key] || key;
+const t = key => text[state.language][key] || extraText[state.language][key] || introText[state.language][key] || missionText[state.language][key] || key;
+const tFor = (key, language) => text[language][key] || extraText[language][key] || introText[language][key] || missionText[language][key] || key;
 const clamp = number => Math.max(0, Math.min(100, Math.round(number)));
 const rect = () => canvas.getBoundingClientRect();
 function setMessage(message, englishMessage = message) {
@@ -66,6 +92,7 @@ function applyLanguage() {
   document.documentElement.lang = language === "pt" ? "pt-BR" : "en";
   document.title = language === "pt" ? "Fronteira | Exploração espacial" : "Frontier | Space exploration";
   document.querySelectorAll("[data-i18n]").forEach(element => { element.innerHTML = t(element.dataset.i18n); });
+  document.querySelectorAll("[data-mission]").forEach(element => { element.textContent = t(element.dataset.mission); });
   document.querySelectorAll("[data-language]").forEach(button => {
     const active = button.dataset.language === language;
     button.classList.toggle("is-active", active);
@@ -76,9 +103,11 @@ function applyLanguage() {
   document.querySelector(".explorer-panel").setAttribute("aria-label", t("controlsLabel"));
   document.querySelector("#crew-picker").setAttribute("aria-label", t("crewLabel"));
   document.querySelector(".inventory-list").setAttribute("aria-label", t("inventoryLabel"));
+  document.querySelector("#daily-task-list").setAttribute("aria-label", t("dailyTasks"));
   document.querySelector(".dpad").setAttribute("aria-label", t("movementLabel"));
   document.querySelectorAll("[data-move]").forEach(button => button.setAttribute("aria-label", t(`${button.dataset.move}Label`)));
   document.querySelector("#event-message").textContent = state.lastMessage[language];
+  document.querySelector(".mission-progress").setAttribute("aria-label", t("missionProgressLabel"));
   document.querySelector("#map-weather").textContent = t(state.world === "moon" ? "moonWeather" : "marsWeather");
   document.querySelector("#location-label").textContent = t(state.world === "moon" ? "moonName" : "marsName");
   document.querySelector("#outpost-map").setAttribute("aria-label", t("keyboard"));
@@ -175,17 +204,21 @@ function drawCrew(tile) {
 }
 function drawSoon() { requestAnimationFrame(drawMap); }
 function animateTo(col, row) {
+  if (state.ended || state.waiting) return;
   const nextCol = Math.max(0, Math.min(9, col)), nextRow = Math.max(0, Math.min(7, row));
   if (state.moveTimer) clearInterval(state.moveTimer);
   state.moveTimer = null;
   state.animation = null;
   state.destination = null;
+  const distance = Math.abs(state.player.col - nextCol) + Math.abs(state.player.row - nextRow);
+  state.resources.energy = clamp(state.resources.energy - Math.ceil(distance * .4));
   state.player = { col: nextCol, row: nextRow };
   drawMap();
   updateTarget();
+  updateUI();
 }
 function moveBy(direction) {
-  if (state.ended) return;
+  if (state.ended || state.waiting) return;
   const moves = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
   state.animation = null;
   const [dc, dr] = moves[direction];
@@ -193,8 +226,9 @@ function moveBy(direction) {
   const row = Math.max(0, Math.min(7, state.player.row + dr));
   if (state.moveTimer) clearInterval(state.moveTimer);
   state.moveTimer = null; state.destination = null;
+  if (col !== state.player.col || row !== state.player.row) state.resources.energy = clamp(state.resources.energy - 1);
   state.player = { col, row };
-  drawMap(); updateTarget();
+  drawMap(); updateUI();
 }
 function cellAt(event) {
   const bounds = rect(), tile = tileSize(), x = event.clientX - bounds.left, y = event.clientY - bounds.top;
@@ -213,6 +247,7 @@ function chooseTarget(target) {
   updateTarget(); drawSoon();
 }
 function onMapClick(event) {
+  if (state.ended || state.waiting) return;
   const point = cellAt(event), worldPoint = tilePoint(point.col, point.row), tolerance = point.tile.width * .48;
   const building = buildings.find(item => { const p = tilePoint(item.col, item.row); return Math.hypot(p.x - point.x, p.y - point.y) < tolerance; });
   const node = state.nodes.find(item => { const p = tilePoint(item.col, item.row); return Math.hypot(p.x - point.x, p.y - point.y) < tolerance; });
@@ -274,26 +309,30 @@ function updateTarget() {
     document.querySelector("#inspection-description").textContent = t(target.desc);
     document.querySelector("#inspection-coords").textContent = `${t("module")} ${String(buildings.findIndex(item => item.id === target.id) + 1).padStart(2, "0")} · ${t("sector")} A`;
   }
-  label.textContent = action; button.disabled = !enabled || state.ended; drawSoon();
+  label.textContent = action; button.disabled = !enabled || state.ended || state.waiting; drawSoon();
 }
 function formatCost(cost) { return Object.entries(cost).filter(([, amount]) => amount > 0).map(([item, amount]) => `${amount} ${t(item)}`).join(" + ") || "0"; }
 function interact() {
+  if (state.ended || state.waiting) return;
   if (!state.target || !isNear(state.target)) { if (state.target) { const spot = neighborSpot(state.target); animateTo(spot[0] ?? spot.col, spot[1] ?? spot.row); } return; }
   const target = state.target;
   if (target.kind === "node") collectNode(target); else upgradeBuilding(target);
 }
 function collectNode(target) {
+  if (state.ended || state.waiting) return;
   const index = state.nodes.findIndex(node => node.id === target.id);
   if (index < 0) { setMessage(tFor("empty", "pt"), tFor("empty", "en")); updateTarget(); return; }
   const node = state.nodes[index]; state.nodes.splice(index, 1);
   state.inventory[node.type] += 1;
+  state.collected[node.type] += 1;
+  state.dailyCollected[node.type] = (state.dailyCollected[node.type] || 0) + 1;
   let message = `${t(nodeTypes[node.type].name)} ${t("collected").toLowerCase()}.`;
   let englishMessage = `${tFor(nodeTypes[node.type].name, "en")} collected.`;
   if (crew[state.selectedCrew].skill === "geologist" && node.type === "scrap") { state.inventory.scrap += 1; message += ` ${t("skillBonus")}: +1 ${t("scrap")}.`; englishMessage += ` Skill bonus: +1 ${tFor("scrap", "en")}.`; }
   if (crew[state.selectedCrew].skill === "botanist" && node.type === "seeds") { state.inventory.seeds += 1; state.resources.food = clamp(state.resources.food + 4); message += ` ${t("skillBonus")}: +1 ${t("seeds")}.`; englishMessage += ` Skill bonus: +1 ${tFor("seeds", "en")}.`; }
   if (crew[state.selectedCrew].skill === "medic" && node.type === "ice") { state.resources.oxygen = clamp(state.resources.oxygen + 5); message += ` ${t("skillBonus")}: +5 O₂.`; englishMessage += " Skill bonus: +5 O₂."; }
   if (state.upgrades.antenna > 0 && Math.random() < .5) { state.inventory[node.type] += 1; message += " +1"; }
-  state.target = null; setMessage(message, englishMessage); updateUI();
+  state.target = null; setMessage(message, englishMessage); updateUI(); checkDailyMission();
 }
 function upgradeBuilding(building) {
   const level = state.upgrades[building.id];
@@ -314,9 +353,55 @@ function updateUI() {
     const value = clamp(state.resources[key]); document.querySelector(`#${key}-value`).textContent = `${value}%`; document.querySelector(`#${key}-meter`).style.width = `${value}%`; document.querySelector(`[data-resource="${key}"]`).classList.toggle("is-low", value < 25);
   }
   for (const item of ["scrap", "ice", "seeds"]) document.querySelector(`#${item === "seeds" ? "seed" : item}-count`).textContent = state.inventory[item];
+  updateObjectives();
+  updateDailyMissions();
+  document.querySelectorAll("[data-move]").forEach(button => { button.disabled = state.ended || state.waiting; });
   document.querySelector("#location-label").textContent = t(state.world === "moon" ? "moonName" : "marsName");
   document.querySelector("#map-weather").textContent = t(state.world === "moon" ? "moonWeather" : "marsWeather");
   updateTarget(); drawSoon();
+}
+function updateDailyMissions() {
+  const taskList = document.querySelector("#daily-task-list");
+  taskList.replaceChildren();
+  let completed = 0;
+  state.dailyTasks.forEach((item, index) => {
+    const count = Math.min(state.dailyCollected[item] || 0, 1);
+    const done = count >= 1;
+    if (done) completed += 1;
+    const row = document.createElement("div");
+    row.className = `daily-task-row${done ? " is-complete" : ""}`;
+    row.innerHTML = `<span class="daily-task-marker">${done ? "✓" : String(index + 1).padStart(2, "0")}</span><span>${t("collectTask")} ${t(`${item}Task`)}</span><strong>${count} / 1</strong>`;
+    taskList.append(row);
+  });
+  document.querySelector("#daily-task-progress").textContent = `${completed} / ${state.dailyTasks.length}`;
+  document.querySelector("#sol-status-progress").textContent = `${completed} / ${state.dailyTasks.length}`;
+  const status = document.querySelector("#sol-status");
+  status.classList.toggle("is-waiting", state.waiting);
+  document.querySelector("#sol-status-label").textContent = t(state.waiting ? "solWaiting" : "solStatus");
+}
+function checkDailyMission() {
+  if (state.ended || state.waiting || !state.dailyTasks.every(item => (state.dailyCollected[item] || 0) >= 1)) return;
+  state.waiting = true;
+  setMessage(tFor("solWaiting", "pt"), tFor("solWaiting", "en"));
+  updateUI();
+  state.advanceTimer = window.setTimeout(() => {
+    state.advanceTimer = null;
+    advanceSol();
+  }, 1600);
+}
+function updateObjectives() {
+  const iceComplete = state.collected.ice >= 2;
+  const recyclerComplete = state.upgrades.recycler >= 1;
+  const supportDone = Number(iceComplete) + Number(recyclerComplete);
+  document.querySelector("#ice-objective-count").textContent = `${Math.min(state.collected.ice, 2)} / 2`;
+  document.querySelector("#recycler-objective-count").textContent = `${Math.min(state.upgrades.recycler, 1)} / 1`;
+  document.querySelector("[data-objective='ice']").classList.toggle("is-complete", iceComplete);
+  document.querySelector("[data-objective='recycler']").classList.toggle("is-complete", recyclerComplete);
+  document.querySelector("#support-progress").textContent = `${supportDone} / 2`;
+  const percent = Math.min(100, state.solsCompleted / 12 * 100);
+  document.querySelector("#sol-progress-meter").style.width = `${percent}%`;
+  document.querySelector(".mission-progress").setAttribute("aria-valuenow", String(state.solsCompleted));
+  document.querySelector("#sol-progress-count").textContent = `${state.solsCompleted} / 12`;
 }
 function changeWorld(world) {
   state.world = world; document.body.dataset.world = world;
@@ -325,26 +410,35 @@ function changeWorld(world) {
   const messageKey = world === "moon" ? "moonChanged" : "marsChanged";
   setMessage(tFor(messageKey, "pt"), tFor(messageKey, "en"));
 }
-function finishSol() {
-  if (state.ended) return;
-  state.sol += 1;
-  state.resources.oxygen = clamp(state.resources.oxygen - 2);
-  state.resources.water = clamp(state.resources.water - 2 + state.upgrades.recycler * 2);
-  state.resources.food = clamp(state.resources.food - 2 + state.upgrades.greenhouse * 2);
-  state.resources.energy = clamp(state.resources.energy - 1 + state.upgrades.solar * 2);
-  state.resources.shield = clamp(state.resources.shield - (state.world === "mars" ? 1 : 0));
+function advanceSol() {
+  if (state.ended || !state.waiting) return;
+  state.waiting = false;
+  state.resources.oxygen = clamp(state.resources.oxygen - 3 + state.upgrades.habitat);
+  state.resources.water = clamp(state.resources.water - 3 + state.upgrades.recycler * 2);
+  state.resources.food = clamp(state.resources.food - 3 + state.upgrades.greenhouse * 2);
+  state.resources.energy = clamp(state.resources.energy - 2 + state.upgrades.solar * 2);
+  if (state.sol % 3 === 0) state.resources.shield = clamp(state.resources.shield - Math.max(0, 3 - state.upgrades.habitat * 2));
+  state.solsCompleted += 1;
   state.nodes = structuredClone(initialNodes);
-  if ([state.resources.oxygen, state.resources.water, state.resources.food].some(value => value <= 0)) { showOutcome(false); return; }
-  if (state.sol >= 12) { showOutcome(true); return; }
+  if ([state.resources.oxygen, state.resources.water, state.resources.food, state.resources.energy].some(value => value <= 0)) { updateUI(); showOutcome(false); return; }
+  if (state.solsCompleted >= 12) { updateUI(); showOutcome(true); return; }
+  state.sol = state.solsCompleted + 1;
+  state.dailyTasks = dailyTasksForSol(state.sol);
+  state.dailyCollected = {};
   setMessage(tFor("solStarted", "pt"), tFor("solStarted", "en")); updateUI();
+}
+function dailyTasksForSol(sol) {
+  const rotations = [["scrap", "ice"], ["seeds", "scrap"], ["ice", "seeds"]];
+  return [...rotations[(sol - 1) % rotations.length]];
 }
 function showOutcome(success) {
   state.ended = true;
   document.querySelector("#outcome-stamp").textContent = t(success ? "complete" : "failed");
   document.querySelector("#outcome-title").textContent = t(success ? "successTitle" : "failTitle");
-  document.querySelector("#outcome-copy").textContent = t(success ? "successCopy" : "failCopy");
+  const supportDone = Number(state.collected.ice >= 2) + Number(state.upgrades.recycler >= 1);
+  document.querySelector("#outcome-copy").textContent = `${t(success ? "successCopy" : "failCopy")} ${t("supportReport")}: ${supportDone}/2 ${t("supportComplete")}.`;
   document.querySelector("#outcome-dialog .eyebrow").textContent = t("report");
-  document.querySelector("#outcome-stats").innerHTML = `<div class="outcome-stat"><strong>${Math.max(0, state.sol - (success ? 0 : 1))}</strong><span>${t("survived")}</span></div><div class="outcome-stat"><strong>4/4</strong><span>${t("crew")}</span></div><div class="outcome-stat"><strong>${Math.round((state.resources.oxygen + state.resources.water + state.resources.food + state.resources.shield) / 4)}%</strong><span>${t("resilience")}</span></div>`;
+  document.querySelector("#outcome-stats").innerHTML = `<div class="outcome-stat"><strong>${state.solsCompleted}</strong><span>${t("survived")}</span></div><div class="outcome-stat"><strong>${supportDone}/2</strong><span>${t("supportReport")}</span></div><div class="outcome-stat"><strong>${Math.round((state.resources.oxygen + state.resources.water + state.resources.food + state.resources.shield) / 4)}%</strong><span>${t("resilience")}</span></div>`;
   document.querySelector("#restart-button span:first-child").textContent = t("restart");
   document.querySelector("#outcome-dialog").showModal();
 }
@@ -359,7 +453,6 @@ document.querySelector("#launch-button").addEventListener("click", () => {
   canvas.focus({ preventScroll: true });
 });
 document.querySelector("#interact-button").addEventListener("click", interact);
-document.querySelector("#advance-button").addEventListener("click", finishSol);
 document.querySelector("#restart-button").addEventListener("click", () => window.location.reload());
 canvas.addEventListener("click", onMapClick);
 window.addEventListener("resize", drawSoon);

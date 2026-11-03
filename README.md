@@ -26,7 +26,7 @@ Space-themed STEM content often simplifies the engineering decisions behind a re
 
 ## 🎯 Mission
 
-Choose four specialists and explore the region together. Each crew member has a skill that helps gather resources or care for the team. Find materials, upgrade modules, and keep the outpost running for 12 sols.
+Choose four specialists and explore the region together. Each crew member has a skill that helps gather resources or care for the team. Main objective: keep the crew alive for 12 sols, starting with 40% in each reserve.
 
 ---
 
@@ -37,7 +37,9 @@ Choose four specialists and explore the region together. Each crew member has a 
 3. Walk with `WASD`, the arrow keys, or the on-screen directional pad. Click a spot on the map to move there.
 4. When you reach scrap, ice, seeds, or a module, press `E` or use the interaction button.
 5. Gather materials and upgrade the habitat, solar array, greenhouse, water recycler, or antenna.
-6. End each sol to replenish supplies and continue the expedition. Keep oxygen, water, and food available until sol 12.
+6. Complete both field objectives for the current sol; the next sol starts automatically after a short wait. There is no manual end-sol button.
+7. Alongside daily tasks, complete two support goals: recover two ice deposits and upgrade the water recycler. Oxygen, water, food, and power decrease with use; EVA walks also consume power.
+8. Habitat, greenhouse, and recycler upgrades offset part of the daily consumption.
 
 ---
 
