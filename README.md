@@ -4,7 +4,7 @@
 
 [![NASA Space Apps Challenge](https://img.shields.io/badge/NASA-Space%20Apps%202026-0B3D91?style=for-the-badge&logo=nasa)](https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/)
 [![Challenge](https://img.shields.io/badge/Challenge-Build%20a%20Junior%20Astronaut%20Mission%20Trainer-FFD166?style=for-the-badge)](https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/)
-[![Status](https://img.shields.io/badge/Status-Playable%20Prototype-28A745?style=for-the-badge)]()
+[![Demo](https://img.shields.io/badge/Demo-live-28A745?style=for-the-badge)](https://carolineamancio.github.io/space-app-2026/)
 [![Tech](https://img.shields.io/badge/Tech-HTML5%20%7C%20CSS3%20%7C%20JavaScript-F97316?style=for-the-badge)]()
 [![License](https://img.shields.io/badge/License-Educational-8B5CF6?style=for-the-badge)]()
 
@@ -12,7 +12,11 @@
 
 A bilingual space exploration game created for the [NASA Space Apps Challenge 2026](https://www.spaceappschallenge.org/2026/challenges/). Control a crew across an expanded isometric map, discover supplies, and turn a lunar or Martian outpost into a better home.
 
-**Play the game:** open [`index.html`](index.html) in a browser or publish this repository with GitHub Pages. This is an independent educational project developed for the challenge, not an official NASA product.
+**[▶ Play the public demo](https://carolineamancio.github.io/space-app-2026/)** · [Presentation script](DEMO.md) · [Sources and science model](SOURCES.md)
+
+The demo matches the latest published version; local changes appear online after they are pushed to GitHub and deployed by Pages. To play locally, open [`index.html`](index.html). This is an independent educational project, not an official NASA product.
+
+![Apollo 11 lunar surface (AS11-40-5877), NASA-credited intro image](https://images-assets.nasa.gov/image/as11-40-5877/as11-40-5877~medium.jpg)
 
 ## 🌌 Challenge
 
@@ -59,7 +63,7 @@ Choose four specialists and explore the region together. Each crew member has a 
 2. Explore the map and find supplies
 3. Use skills to earn collection bonuses
 4. Spend materials on visible base upgrades
-5. Advance the sol and keep exploring
+5. Complete the daily objectives to start the next sol automatically
 
 ---
 

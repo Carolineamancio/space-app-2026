@@ -4,7 +4,7 @@
 
 [![NASA Space Apps Challenge](https://img.shields.io/badge/NASA-Space%20Apps%202026-0B3D91?style=for-the-badge&logo=nasa)](https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/)
 [![Desafio](https://img.shields.io/badge/Desafio-Build%20a%20Junior%20Astronaut%20Mission%20Trainer-FFD166?style=for-the-badge)](https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/)
-[![Status](https://img.shields.io/badge/Status-Prot%C3%B3tipo%20jog%C3%A1vel-28A745?style=for-the-badge)]()
+[![Demo](https://img.shields.io/badge/Demo-online-28A745?style=for-the-badge)](https://carolineamancio.github.io/space-app-2026/)
 [![Tecnologia](https://img.shields.io/badge/Tecnologia-HTML5%20%7C%20CSS3%20%7C%20JavaScript-F97316?style=for-the-badge)]()
 [![Licença](https://img.shields.io/badge/Licen%C3%A7a-Educacional-8B5CF6?style=for-the-badge)]()
 
@@ -12,7 +12,11 @@
 
 Um jogo educativo bilíngue de exploração espacial criado para o [NASA Space Apps Challenge 2026](https://www.spaceappschallenge.org/2026/challenges/). Controle a equipe em um mapa isométrico ampliado, descubra suprimentos e transforme um posto lunar ou marciano em uma base melhor.
 
-**O jogo já pode ser experimentado:** abra [`index.html`](index.html) no navegador ou publique o repositório pelo GitHub Pages. Este é um projeto educacional independente desenvolvido para o desafio, não um produto oficial da NASA.
+**[▶ Abrir a demo pública](https://carolineamancio.github.io/space-app-2026/)** · [Roteiro de apresentação](DEMO.md) · [Fontes e modelo científico](SOURCES.md)
+
+A demo corresponde à última versão publicada; alterações locais aparecem online depois de enviadas ao GitHub e publicadas pelo Pages. Para jogar localmente, abra [`index.html`](index.html). Este é um projeto educacional independente, não um produto oficial da NASA.
+
+![Superfície lunar da Apollo 11 (AS11-40-5877), imagem de abertura creditada à NASA](https://images-assets.nasa.gov/image/as11-40-5877/as11-40-5877~medium.jpg)
 
 ## 🌌 Desafio
 
@@ -59,7 +63,7 @@ Escolha quatro especialistas e explore a região juntos. Cada pessoa tem uma hab
 2. Explorar o mapa e encontrar suprimentos
 3. Usar habilidades para recolher bônus
 4. Gastar materiais em melhorias visíveis na base
-5. Avançar o sol e continuar a exploração
+5. Completar os objetivos do dia para iniciar o próximo sol automaticamente
 
 ---
 
